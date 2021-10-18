@@ -1,7 +1,8 @@
-# Maintainer: Dylan Araps <dyl@tfwno.gf>
+# Neofetch Maintainer: Dylan Araps <dyl@tfwno.gf>
 # neofetch-git AUR PKGBUILD - https://aur.archlinux.org/packages/neofetch-git/
 # Frogged by Tk-Glitch <tkg@froggi.es>
-pkgname=chaotic-neofrog-git
+# Adapted for Chaotic-AUR by PedroHLC <root@pedrohlc.com>
+pkgname=chaotic-neofetch-git
 _pkgname=neofetch
 pkgver=7.1.0.r153.g4b91c943
 pkgrel=1
