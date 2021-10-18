@@ -31,7 +31,7 @@ makedepends=('git')
 source=("$pkgname::git+https://github.com/dylanaraps/neofetch.git"
         'chaotic.patch' 'chaotic-aur.sh' 'logo.jpg')
 md5sums=('SKIP'
-        'abac215dbca3a8195d07e7d223ab7e98'
+        '58ba6a1dd2f82cd47126742e1e9ffc6d'
         'c66a52ad307423c090b77219acb0b5f6'
         '7b8f8e223e7271daf5d3b15cd9b39472')
 

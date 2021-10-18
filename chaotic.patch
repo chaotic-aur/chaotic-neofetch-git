@@ -16,7 +16,7 @@ index 2b41f34f..06a01774 100644
  uninstall:
  	@rm -rf $(DESTDIR)$(PREFIX)/bin/neofetch
 diff --git a/neofetch b/neofetch
-index db47a471..dd0400bb 100755
+index db47a471..651e06b4 100755
 --- a/neofetch
 +++ b/neofetch
 @@ -754,7 +754,7 @@ disk_display="off"
@@ -42,7 +42,7 @@ index db47a471..dd0400bb 100755
  # Flags:   --image_size
  #          --size
 -image_size="auto"
-+image_size="50%"
++image_size="360px"
  
  # Catimg block size.
  # Control the resolution of catimg.
