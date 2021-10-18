@@ -9,9 +9,9 @@ pkgdesc="A CLI system information tool written in BASH that supports displaying 
 arch=('any')
 url="https://github.com/dylanaraps/${_pkgname}"
 license=('MIT')
-provides=("$_pkgname=${pkgver}" "neofrog-git=${pkgver}")
-conflicts=($_pkgname 'neofrog-git')
-depends=('bash' 'awk')
+provides=()
+conflicts=()
+depends=('bash' 'awk' 'viu')
 optdepends=(
   'feh: Wallpaper Display'
   'imagemagick: Image cropping / Thumbnail creation / Take a screenshot'
@@ -28,10 +28,11 @@ optdepends=(
 )
 makedepends=('git')
 source=("$pkgname::git+https://github.com/dylanaraps/neofetch.git"
-        'frog.patch' 'chaotic.patch' 'chaotic-aur.sh')
+        'chaotic.patch' 'chaotic-aur.sh' 'logo.jpg')
 md5sums=('SKIP'
-         'a3fa5aeed248b78b27e351e3421d9ca5'
-         '29be3803d8f3131e6f855be1ac958c95' '751a8c22bb3c79ac77d442f480f60a25')
+        'abac215dbca3a8195d07e7d223ab7e98'
+        'c66a52ad307423c090b77219acb0b5f6'
+        '7b8f8e223e7271daf5d3b15cd9b39472')
 
 pkgver() {
   cd "$pkgname"
@@ -41,7 +42,6 @@ pkgver() {
 prepare() {
   cd "$pkgname"
 
-  patch -Np1 < "$srcdir"/frog.patch
   patch -Np1 < "$srcdir"/chaotic.patch
 }
 
@@ -49,6 +49,7 @@ package() {
   cd "$pkgname"
   
   make DESTDIR="$pkgdir" install
-  install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/neofetch/LICENSE.md"
+  install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/chaotic-neofetch/LICENSE.md"
+  install -D -m644 ../logo.jpg "$pkgdir/usr/share/chaotic-aur/logo.jpg"
   install -D -m755 ../chaotic-aur.sh "$pkgdir/usr/bin/chaotic-aur"
 }
