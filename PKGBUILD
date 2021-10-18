@@ -1,17 +1,17 @@
 # Maintainer: Dylan Araps <dyl@tfwno.gf>
 # neofetch-git AUR PKGBUILD - https://aur.archlinux.org/packages/neofetch-git/
 # Frogged by Tk-Glitch <tkg@froggi.es>
-pkgname=neofrog-git
+pkgname=chaotic-neofrog-git
 _pkgname=neofetch
-pkgver=7.0.0.r46.gc8e08cd7
+pkgver=7.1.0.r153.g4b91c943
 pkgrel=1
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
 url="https://github.com/dylanaraps/${_pkgname}"
 license=('MIT')
-provides=($_pkgname)
-conflicts=($_pkgname)
-depends=('bash')
+provides=("$_pkgname=${pkgver}" "neofrog-git=${pkgver}")
+conflicts=($_pkgname 'neofrog-git')
+depends=('bash' 'awk')
 optdepends=(
   'feh: Wallpaper Display'
   'imagemagick: Image cropping / Thumbnail creation / Take a screenshot'
@@ -28,20 +28,27 @@ optdepends=(
 )
 makedepends=('git')
 source=("$pkgname::git+https://github.com/dylanaraps/neofetch.git"
-        "frog.patch")
+        'frog.patch' 'chaotic.patch' 'chaotic-aur.sh')
 md5sums=('SKIP'
-         'a3fa5aeed248b78b27e351e3421d9ca5')
+         'a3fa5aeed248b78b27e351e3421d9ca5'
+         '29be3803d8f3131e6f855be1ac958c95' '751a8c22bb3c79ac77d442f480f60a25')
 
 pkgver() {
   cd "$pkgname"
   git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
 }
 
-package() {
+prepare() {
   cd "$pkgname"
 
   patch -Np1 < "$srcdir"/frog.patch
+  patch -Np1 < "$srcdir"/chaotic.patch
+}
+
+package() {
+  cd "$pkgname"
   
   make DESTDIR="$pkgdir" install
   install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/neofetch/LICENSE.md"
+  install -D -m755 ../chaotic-aur.sh "$pkgdir/usr/bin/chaotic-aur"
 }

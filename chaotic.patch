@@ -1,0 +1,12 @@
+diff --git a/neofetch b/neofetch
+index db47a471..2fcb91bb 100755
+--- a/neofetch
++++ b/neofetch
+@@ -1541,6 +1541,7 @@ get_packages() {
+             has kiss       && tot kiss l
+             has cpt-list   && tot cpt-list
+             has pacman-key && tot pacman -Qq --color never
++            has chaotic-aur && tot chaotic-aur
+             has dpkg       && tot dpkg-query -f '.\n' -W
+             has xbps-query && tot xbps-query -l
+             has apk        && tot apk info
