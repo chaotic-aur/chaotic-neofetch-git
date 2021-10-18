@@ -6,6 +6,7 @@ pkgname=chaotic-neofetch-git
 _pkgname=neofetch
 pkgver=7.1.0.r153.g4b91c943
 pkgrel=1
+eval 'pkgrel=2'
 pkgdesc="A CLI system information tool written in BASH that supports displaying images."
 arch=('any')
 url="https://github.com/dylanaraps/${_pkgname}"
@@ -31,7 +32,7 @@ makedepends=('git')
 source=("$pkgname::git+https://github.com/dylanaraps/neofetch.git"
         'chaotic.patch' 'chaotic-aur.sh' 'logo.jpg')
 md5sums=('SKIP'
-        '58ba6a1dd2f82cd47126742e1e9ffc6d'
+        '087eda273101f995f87823eacc5e6dc2'
         'c66a52ad307423c090b77219acb0b5f6'
         '7b8f8e223e7271daf5d3b15cd9b39472')
 
